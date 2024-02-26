@@ -11,7 +11,6 @@ dotenv.config();
 connectDB();
 
 const app = express();
-;
 // Middlewares
 app.use(
   "/images",
@@ -26,7 +25,9 @@ app.use(
     origin: process.env.CLIENT_URL,
   })
 );
+
 //Routes
+app.use("/api/v1/user", require("./routes/user.route"));
 
 // Error handling middleware
 app.use((err, req, res, next) => {
