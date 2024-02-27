@@ -28,7 +28,7 @@ const register = async (req, res) => {
     // save user
     const newUser = await userModel.create({
       username,
-      password:hashedPassword,
+      password: hashedPassword,
     });
 
     res.status(201).send({
@@ -86,7 +86,24 @@ const login = async (req, res) => {
   }
 };
 
+// logout
+const logout = async (req, res) => {
+  try {
+    res.status(200).send({
+      success: true,
+      message: "Logout Successfully",
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({
+      success: false,
+      message: "Internal Server Error",
+    });
+  }
+};
+
 module.exports = {
   register,
   login,
+  logout,
 };

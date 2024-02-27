@@ -8,7 +8,6 @@ const isAuth = async (req, res, next) => {
       req.headers.authorization,
       process.env.JWT_SECRET
     );
-    console.log(decode)
     const user = await userModel.findById(decode.id);
     if (!user) {
       return res.status(401).send({
